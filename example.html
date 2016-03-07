@@ -1,0 +1,101 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="scrollj.js"></script>
+
+        <style type="text/css">
+
+        section {
+          height: 600px;
+          background-color: rgba(255, 113, 152, 0.35);
+          outline: 1px solid black;
+          position: relative; 
+        }
+        section.light {
+          background-color: #6F6F96;
+        }  
+        section:after {
+          position: absolute;
+          content: "";
+          top: 50%;
+          left: 50%;
+          width: 100px;
+          height: 100px;
+          background-color: white;
+          margin: -50px 0 0 -50px;
+          opacity: 0;     
+          -webkit-transition: all 3s ease;
+          transition: all 3s ease;
+        }
+        section.active:after  {   
+          opacity: 1;
+        }
+
+
+
+        </style>
+
+    </head>
+    <body>
+        
+  
+
+    <script type="text/javascript">
+
+        // Functions to test run
+
+        function consoler(){
+          console.log("I am a function")
+        }
+        function outsoler(){
+          console.log("I run on out")
+        }
+        // Functions to run
+        function inner(){
+          console.log("In")
+        }
+        function outer(){
+          console.log("Out")
+        }
+
+    </script>
+
+  
+  <section data-scrollj class='dark'>
+  </section>
+    
+  <section data-scrollj class='light'>
+  </section>
+    
+  <section data-scrollj class='dark'>
+  </section>
+    
+  <section data-scrollk class='light'>
+  </section>
+    
+  <section data-scrollj class='dark'>
+  </section>
+    
+  <section data-scrollk class='light'>
+  </section>
+    
+  <section data-scrollj class='dark'>
+  </section>
+  
+  
+</body>
+</html>
+
+
+
+    </body>
+</html>
