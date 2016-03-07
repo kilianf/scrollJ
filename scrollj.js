@@ -10,34 +10,35 @@
       items.push(new Array(item, funcs))
     }
     
+    // Create some example of different elements to search for and functions to run
+    // TODO: Do this outside of the IIFE
     creator('[data-scrollj]', { in : "consoler", out: "outsoler" });
     creator('[data-scrollk]', { in : "inner", out: "outer" });
-    
-    function consolate(){
-      console.log("tim")
-    }
-    
-    
+
     // The meaty part
     function scroller(el, obj){
-       var scrollEl = $(el)   
-       var funcin = obj.in ? obj.in : null;   
-       var funcout = obj.out ? obj.out : null;  
-       var fnin = window[funcin]; 
-       var fnout = window[funcout]; 
-  
-       var scrollIndex = window.pageYOffset; 
+       var scrollEl = $(el),
+           funcin = obj.in ? obj.in : null,  
+           funcout = obj.out ? obj.out : null,  
+           fnin = window[funcin], 
+           fnout = window[funcout], 
+           funcIsTrue = typeof fnin === "function" ? true : false,
+           scrollIndex = window.pageYOffset; 
+
        scrollEl.each(function(){
-           if( (this.offsetTop + this.clientHeight) > scrollIndex && (scrollIndex + window.innerHeight) > (this.offsetTop) ) {
-             if( !$(this).hasClass('active') ) {
-               if (typeof fnin === "function") fnin();
+           var hasTheClass = $(this).hasClass('active'),
+               $this = $(this);
+
+           if( (this.offsetTop + this.clientHeight) > scrollIndex && (scrollIndex + window.innerHeight) > (this.offsetTop)) {
+             if( !hasTheClass && funcIsTrue ) {
+              fnin();
              }
-             $(this).addClass('active')         
+             $this.addClass('active')         
            } else {
-             if( $(this).hasClass('active') ) {
-               if (typeof fnout === "function") fnout();
+             if( hasTheClass && funcIsTrue ) {
+               fnout();
              }
-             $(this).removeClass('active')
+             $this.removeClass('active')
            }
        });
     }
@@ -65,7 +66,7 @@
       scroller(items[i][0], items[i][1])
     }
   
-  })
+  });
   
 })(jQuery)
 
