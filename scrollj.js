@@ -1,7 +1,7 @@
 // Create some example of different elements to search for and functions to run
 // Examples:
-// ScrollJ.creator('[data-scrollj]', { in : "consoler", out: "outsoler" });
-// ScrollJ.creator('[data-scrollk]', { in : "inner", out: "outer" });
+// ScrollJ.creator('[data-scrollj]', { enter : "consoler", exit: "outsoler" });
+// ScrollJ.creator('[data-scrollk]', { enter : "inner", exit: "outer" });
 
 
 var ScrollJ = (function($){
@@ -19,8 +19,8 @@ var ScrollJ = (function($){
     // The meaty part
     function scroller(el, obj){
        var scrollEl = $(el),
-           funcin = obj.in ? obj.in : null,  
-           funcout = obj.out ? obj.out : null,  
+           funcin = obj.enter ? obj.enter : null,  
+           funcout = obj.exit ? obj.exit : null,  
            fnin = window[funcin], 
            fnout = window[funcout], 
            funcIsTrue = typeof fnin === "function" ? true : false,
