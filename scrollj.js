@@ -1,19 +1,20 @@
-(function($){
+// Create some example of different elements to search for and functions to run
+// Examples:
+// ScrollJ.creator('[data-scrollj]', { in : "consoler", out: "outsoler" });
+// ScrollJ.creator('[data-scrollk]', { in : "inner", out: "outer" });
+
+
+var ScrollJ = (function($){
   
+  // Store all of the data-atts and functions to run in an array
+  var items = []
+  
+  // Push the array to items[]
+  function creator(item, funcs) {
+    items.push(new Array(item, funcs))
+  }
+
   $(document).ready(function(){
-  
-    // Store all of the data-atts and functions to run in an array
-    var items = []
-  
-    // Push the array to items[]
-    function creator(item, funcs) {
-      items.push(new Array(item, funcs))
-    }
-    
-    // Create some example of different elements to search for and functions to run
-    // TODO: Do this outside of the IIFE
-    creator('[data-scrollj]', { in : "consoler", out: "outsoler" });
-    creator('[data-scrollk]', { in : "inner", out: "outer" });
 
     // The meaty part
     function scroller(el, obj){
@@ -67,6 +68,11 @@
     }
   
   });
+
+  return {
+    creator: creator
+  }
+
   
 })(jQuery)
 
